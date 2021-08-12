@@ -1,0 +1,69 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }"
+  [template]="customLoadingTemplate"></ngx-loading>
+<div class="">
+  <div class="container rt-nabvar-primary rt-body">
+    <span>Nuevo Paciente</span>
+    <form [formGroup]='pacienteForm' class="form">
+      <div class="row">
+        <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Usuario">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Nombre:</label><br>
+            <input type="text" class="form-control form-control-sm" formControlName="Nombre" name="username"
+              id="username">
+          </div>
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Apellido paterno:</label><br>
+            <input type="text" class="form-control form-control-sm" formControlName="Apellido_Paterno" name="username"
+              id="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color"><span class="error-msg">*</span>Apellido materno:</label><br>
+            <input type="text" name="password" id="password" formControlName="Apellido_Materno"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color"><span class="error-msg">*</span>Fecha de nacimiento:</label><br>
+            <div class="input-group">
+              <input class="form-control  form-control-sm" formControlName="Fecha_Nacimiento" placeholder="1990-09-19"
+                name="dp" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-primary calendar" (click)="d.toggle()" type="button">Seleccionar
+                  fecha</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Sexo:</label><br>
+            <ng-select [items]="sexo" bindLabel="Sexo" formControlName="Sexo" placeholder="Selecciona una opción*">
+            </ng-select>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Lugar de residencia:</label><br>
+            <input type="text" name="username" id="username" formControlName="Residencia"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color">Religión:</label><br>
+            <input type="text" name="password" id="password" formControlName="Religion"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color">Informante:</label><br>
+            <input type="text" name="password" id="password" formControlName="Informante"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" name="submit" [disabled]="pacienteForm.invalid" (click)="guardarPaciente()"
+          class="btn btn-primary btn-md" value="Guardar">
+      </div>
+      <br>
+    </form>
+  </div>
+</div>

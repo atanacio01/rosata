@@ -1,0 +1,12 @@
+.nav-active {
+  cursor: pointer;
+  /* background-color: #417bff; */
+  color: #417bff !important;
+  font-weight: bold;
+  border: solid 1px #fff;
+  /* border-bottom: solid 2px #417bff; */
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: rgba(0,0,0,.9) !important;
+}

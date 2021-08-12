@@ -1,0 +1,87 @@
+/* You can add global styles to this file, and also import other style files */
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import "~@ng-select/ng-select/themes/default.theme.css";
+@import "../node_modules/angular-calendar/css/angular-calendar.css";
+
+body {
+  background-color: #eee;
+  color: #212529;
+}
+
+.ng-sidebar {
+  background-color: #fff;
+  border-right: #BDBDBD 1px solid;
+}
+
+aside {
+  margin-top: 56px;
+  width: 57px;
+}
+
+.rt-nabvar-primary {
+  background-color: #fff;
+  color:  #212529;
+  box-shadow: 0 1px 0 rgba(24,28,33,.06);
+}
+
+
+.navbar-light{
+  color:  #212529 !important;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color:  #212529 !important;
+}
+
+.rt-primary {
+  background-color: #0097A7;
+}
+
+.rt-primary-dark {
+  background-color: #FF9800;
+}
+
+.rt-color-text {
+  color: #fff !important;
+}
+
+.rt-heading {
+  margin-top: 15px;
+}
+
+.rt-header {
+  padding: 15px;
+  margin-bottom: 10px;
+  margin-top: 30px;
+  border: 1px solid  rgba(24, 28, 33, 0.15);
+  border-radius: .25rem;
+}
+
+.rt-body {
+  padding: 30px 30px 0px 30px;
+  margin-bottom: 30px;
+  margin-top: 10px;
+  border: 1px solid  rgba(24, 28, 33, 0.15);
+  border-radius: .25rem;
+}
+
+.error-msg {
+  color: red;
+}
+
+.ng-select .ng-select-container {
+  min-height: 31px;
+}
+
+.ng-select.ng-select-single .ng-select-container {
+  height: 31px;
+}
+
+.ngb-tp-input {
+  height: 32px !important;
+}
+
+.main-text-color{
+  color: #3d4051;
+  font-size: 14px;
+}

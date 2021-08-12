@@ -1,0 +1,603 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }"
+  [template]="customLoadingTemplate"></ngx-loading>
+<div class="container rt-nabvar-primary rt-special-body">
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <i class="fas fa-info" style="margin-right: 11px;"></i>Información general
+          </button>
+        </h2>
+      </div>
+      <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='infoGeneralForm' class="form">
+            <div class="row">
+              <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="id">
+              <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Paciente">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Antecedentes importantes:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Antecedentes_Importantes" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Alergias:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Alergias" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="main-text-color">Quién refiere al paciente:</label><br>
+                  <input type="text" formControlName="Refiere" class="form-control form-control-sm">
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Observaciones:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Observaciones" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" (click)="guardarHistoriaClinica()" class="btn btn-primary btn-md" value="Guardar">
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+            <i class="fas fa-file-medical" style="margin-right: 7px;"></i>Antecedentes Heredofamiliares
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='aHeredoFamForm' class="form">
+            <div class="row">
+              <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="aHeredoFamForm.id">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Del padre:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Padre" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">De la madre:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Madre" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="main-text-color">De los hermanos:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Hermanos" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">De los abuelos, tíos, primos y otros
+                    familiares:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Otros_Familiares" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Historia económica familiar:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Historia_Economica" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Tipo de familia:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Tipo_Familia">
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Funcionalidad:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Funcionalidad">
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Dinámica familiar:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Dinamica">
+                </div>
+
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" name="submit" (click)="guardarHeredoFamiliares()" class="btn btn-primary btn-md"
+                value="Guardar">
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+            <i class="fas fa-file-medical-alt" style="margin-right: 7px;"></i>Antecedentes Personales No Patológicos
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+
+          <h6>Antecedentes Prenatales</h6>
+          <hr>
+          <form [formGroup]='aPersonalesNPForm' class="form">
+            <div class="row">
+              <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Historia">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Madre gesta:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Madre_Gesta">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Para:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Para">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="main-text-color">Cesáreas:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Cesareas">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Abortos:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Abortos">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Edad en la que se embarazó del paciente:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Edad_Embarazo">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Semanas de gestación:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Gestacion">
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Complicaciones durante el embarazo:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Complicaciones">
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Alimentación:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Alimentacion">
+                </div>
+
+
+              </div>
+              <br>
+            </div>
+
+            <h6>Antecedentes Perinatales</h6>
+            <hr>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Características del trabajo de parto:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Trabajo_Parto">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Duración del trabajo de parto:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Duracion_Trabajo_Parto">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="main-text-color">Semanas de gestación:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Semanas_Gestacion">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Donde fué atendida:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Lugar_Atencion">
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Cómo fue obtenido el producto:</label><br>
+                  <div class="form-group">
+                    <input type="text" class="form-control form-control-sm" formControlName="Obtencion_Producto">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">En dónde se atendió:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Lugar_Atencion_Producto">
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Complicaciones del parto:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Complicaciones_Parto">
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Características del liquido amniótico y
+                    placenta:</label><br>
+                  <input type="text" class="form-control form-control-sm" formControlName="Caracteristicas_LiqPlacenta">
+                </div>
+              </div>
+              <br>
+            </div>
+
+            <hr>
+            <div class="row">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Antecedentes Neonatales Inmediatos:</label><br>
+                  <textarea class="form-control" formControlName="ANI" rows="2"></textarea>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" formControlName="Desarrollo_Psicomotor">
+                  <label class="form-check-label" for="defaultCheck1">
+                    <label for="username" class="main-text-color">Desarrollo Psicomotor</label>
+                  </label>
+                </div>
+
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" formControlName="ANI_Denticion">
+                  <label class="form-check-label" for="defaultCheck1">
+                    <label for="username" class="main-text-color">Dentición</label><br>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Alimentación:</label><br>
+                  <textarea class="form-control" formControlName="ANI_Alimentacion" rows="2"></textarea>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" formControlName="ANI_Inmunizaciones">
+                  <label class="form-check-label" for="defaultCheck1">
+                    <label for="username" class="main-text-color">Inmunizaciones</label><br>
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Hábitat e Higiene Personal:</label><br>
+                  <textarea class="form-control" formControlName="Habitat_Higiene" rows="2"></textarea>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" value="" formControlName="Respiro_Lloro">
+                  <label class="form-check-label" for="defaultCheck1">
+                    <label for="username" class="main-text-color">Respiró y lloró al nacer</label><br>
+                  </label>
+                </div>
+              </div>
+              <div class="col-6">
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Calificación de APGAR:</label><br>
+                  <input type="text" formControlName="APGAR" class="form-control form-control-sm">
+                </div>
+                <div class="form-group">
+
+                  <label for="username" class="main-text-color">Calificación de Silverman:</label><br>
+                  <input type="text" formControlName="Silverman" class="form-control form-control-sm">
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Maniobrás de reanimación especiales:</label><br>
+                  <textarea class="form-control" formControlName="Maniobras_Reanimacion" rows="2"></textarea>
+                </div>
+
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Ameritó estar en incubadora y por qué:</label><br>
+                  <textarea class="form-control" formControlName="Amerito_Incubadora" rows="2"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" name="submit" (click)="guardarAntecedentesNoPatologicos()"
+                class="btn btn-primary btn-md" value="Guardar">
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingFour">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+            <i class="fas fa-female" style="margin-right:13px;"></i>Antecedentes Ginecológicos
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='aGinecologicosForm' class="form">
+            <input type="text" class="form-control form-control-sm" *ngIf="1==2"
+              formControlName="aGinecologicosForm.id">
+            <div class="form-group">
+              <label for="username" class="main-text-color">Niña:</label><br>
+              <div class="form-group">
+                <textarea class="form-control" formControlName="Niña" rows="2"></textarea>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="username" class="main-text-color">Niño:</label><br>
+              <div class="form-group">
+                <textarea class="form-control" formControlName="Niño" rows="2"></textarea>
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" name="submit" (click)="guardarGinecologicos()" class="btn btn-primary btn-md"
+                value="Guardar">
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card">
+      <div class="card-header" id="headingFive">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+            <i class="fas fa-chart-line" style="margin-right: 5px;"></i>Desarrollo
+          </button>
+        </h2>
+      </div>
+      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='desarrolloForm' class="form">
+            <div class="row">
+              <div class="col-6">
+                <input type="text" class="form-control form-control-sm" *ngIf="1==2"
+                  formControlName="desarrolloForm.id">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Desarrollo Psicomotor:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Psicomotor" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Desarollo Motor Fino:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Motor_Fino" rows="2"></textarea>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Desarollo Motor Grueso:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Motor_Grueso" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Lenguaje:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Lenguaje" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Social-Adaptativo:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Social_Adaptativo" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Dentición:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Desarrollo_Denticion" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Hábitat:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Habitat" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Higiene:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Higiene" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group float-right">
+                  <input type="submit" name="submit" (click)="guardarDesarrollo()" class="btn btn-primary btn-md"
+                    value="Guardar">
+                </div>
+                <br>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingSix">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+            <i class="fas fa-pills" style="margin-right: 5px;"></i>Antecedentes Personales Patológicos
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='appForm' class="form">
+            <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="appForm.id">
+            <div class="form-group">
+              <label for="username" class="main-text-color">Tipo de padecimiento:</label><br>
+              <div class="form-group">
+                <textarea class="form-control" formControlName="Tipo_Padecimiento" rows="2"></textarea>
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" name="submit" (click)="guardarPersonalesPatologicos()" class="btn btn-primary btn-md"
+                value="Guardar">
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header" id="headingSeven">
+        <h2 class="mb-0">
+          <button class="btn btn-link collapsed collapse-rt" type="button" data-toggle="collapse"
+            data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+            <i class="fas fa-user-md" style="margin-right: 9px;"></i>Exploración Física
+          </button>
+        </h2>
+      </div>
+      <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven" data-parent="#accordionExample">
+        <div class="card-body">
+          <form [formGroup]='exploracionForm' class="form">
+            <div class="row">
+              <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="aHeredoFamForm.id">
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Inspeccion General:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Inspeccion_General" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Piel Faneras:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="PielFaneras" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="main-text-color">Cabeza:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Cabeza" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Ojos:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Ojos" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Oidos:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Oidos" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Nariz:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Nariz" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Boca:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Boca" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Cuello:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Cuello" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Torax:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Torax" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Corazon:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Corazon" rows="2"></textarea>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Abdomen:</label><br>
+                  <div class="form-group">
+                    <textarea class="form-control" formControlName="Abdomen" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Extremidades:</label><br>
+                  <textarea class="form-control" formControlName="Extremidades" rows="2"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Ano Rectal:</label><br>
+                  <textarea class="form-control" formControlName="Rectal" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Vesicular:</label><br>
+                  <textarea class="form-control" formControlName="Vesicular" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Neurológico:</label><br>
+                  <textarea class="form-control" formControlName="Neurologico" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Pares Craneales:</label><br>
+                  <textarea class="form-control" formControlName="Pares_Craneales" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Sistema Motor Sensorial:</label><br>
+                  <textarea class="form-control" formControlName="Sis_MotorSensorial" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Muscular:</label><br>
+                  <textarea class="form-control" formControlName="Muscular" rows="2"></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="username" class="main-text-color">Columna:</label><br>
+                  <textarea class="form-control" formControlName="Columna" rows="2"></textarea>
+                </div>
+              </div>
+            </div>
+            <div class="form-group float-right">
+              <input type="submit" name="submit" (click)="guardarExploracion()" class="btn btn-primary btn-md"
+                value="Guardar">
+            </div>
+            <br>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

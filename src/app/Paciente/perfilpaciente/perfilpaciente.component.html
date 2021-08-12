@@ -1,0 +1,103 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }"
+  [template]="customLoadingTemplate"></ngx-loading>
+<div class=" ">
+  <div class="container rt-nabvar-primary rt-header">
+    <div class="row" style="width:100%;">
+      <div class="col-lg-9">
+        <label for="" style="padding: 5px;">
+          <strong>{{NombrePaciente}}</strong>
+          <br>
+          <strong>Fecha de nacimiento: </strong>{{FechaNacimiento}}
+          <br>
+          <strong>Edad: </strong>{{EdadPaciente}}
+        </label>
+      </div>
+      <div class="col-lg-3 "><button type="button" class="btn btn-primary float-right" (click)="nuevaconsulta()"><i
+            class="fas fa-user"></i> Nueva
+          consulta</button></div>
+    </div>
+  </div>
+  <div class="container" style="padding-left: 0px !important;">
+    <ul class="nav nav-pills">
+      <li class="nav-item" *ngFor="let item of opciones" style="margin:3px;">
+        <a class="nav-link tab-class" [ngClass]="{'tab-active': isActive(item)}" (click)="goto(item.metodo,item)"
+          style="cursor: pointer;">
+          <i [ngClass]="item.icono" style="margin:5px;"></i>
+          {{item.texto}}</a>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="">
+  <div *ngIf="!mostarInfo" class="container rt-nabvar-primary rt-body">
+    <h5>Datos personales</h5>
+    <form [formGroup]='pacienteForm' class="form">
+      <div class="row">
+        <input type="text" formControlName="Nombre_Completo" class="form-control form-control-sm" *ngIf="1==2">
+        <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="id">
+        <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Usuario">
+        <div class="col-6">
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Nombre:</label><br>
+            <input type="text" class="form-control form-control-sm" formControlName="Nombre" name="username"
+              id="username">
+          </div>
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Apellido paterno:</label><br>
+            <input type="text" class="form-control form-control-sm" formControlName="Apellido_Paterno" name="username"
+              id="username">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color"><span class="error-msg">*</span>Apellido materno:</label><br>
+            <input type="text" name="password" id="password" formControlName="Apellido_Materno"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color"><span class="error-msg">*</span>Fecha de nacimiento:</label><br>
+            <div class="input-group">
+              <input class="form-control  form-control-sm" formControlName="Fecha_Nacimiento" placeholder="1990-09-19"
+                name="dp" ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-primary calendar" (click)="d.toggle()" type="button">Seleccionar
+                  fecha</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Sexo:</label><br>
+            <ng-select [items]="sexo" bindLabel="Sexo" formControlName="Sexo" placeholder="Servicio deseado*">
+            </ng-select>
+          </div>
+
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <label for="username" class="main-text-color"><span class="error-msg">*</span>Lugar de residencia:</label><br>
+            <input type="text" name="username" id="username" formControlName="Residencia"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color">Religión:</label><br>
+            <input type="text" name="password" id="password" formControlName="Religion"
+              class="form-control form-control-sm">
+          </div>
+          <div class="form-group">
+            <label for="password" class="main-text-color">Informante:</label><br>
+            <input type="text" name="password" id="password" formControlName="Informante"
+              class="form-control form-control-sm">
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input type="submit" name="submit" [disabled]="pacienteForm.invalid" (click)="actualizarPaciente()"
+          class="btn btn-primary btn-md" value="Actualizar">
+      </div>
+      <br>
+    </form>
+  </div>
+
+  <div class="" *ngIf="mostarInfo">
+    <router-outlet></router-outlet>
+  </div>
+</div>

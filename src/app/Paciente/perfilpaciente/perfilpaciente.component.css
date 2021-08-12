@@ -1,0 +1,81 @@
+.outlet-shadow {
+  -webkit-box-shadow: 2px 0px 15px 0px rgba(168, 168, 168, 0.7);
+  -moz-box-shadow: 2px 0px 15px 0px rgba(168, 168, 168, 0.7);
+  box-shadow: 2px 0px 15px 0px rgba(168, 168, 168, 0.7);
+  padding: 15px;
+  margin-bottom: 30px;
+  background-color: white;
+}
+
+.card {
+
+  border: 0px solid rgba(0, 0, 0, .125) !important;
+
+}
+
+.icon-size-rt {
+  font-size: 35px;
+}
+
+.icon-info-rt {
+  padding: 1px 10px 1px 11px;
+  background: transparent;
+  border-radius: 28px;
+  font-size: 35px;
+  color: #FFFFFF;
+}
+
+.icon-historia-rt {
+  padding: 0px 15px 2px 15px;
+  background: transparent;
+  border-radius: 28px;
+  font-size: 35px;
+  color: #767686;
+}
+
+.icon-consultas-rt {
+  padding: 1px 10px 1px 11px;
+  background: transparent;
+  border-radius: 28px;
+  font-size: 35px;
+  color: #767686;
+}
+
+.icon-active {
+  background: #3d4051;
+}
+
+.icon-consultas-rt:hover {
+  background: #3d4051;
+  color: #fff;
+}
+
+.icon-historia-rt:hover {
+  background: #3d4051;
+  color: #fff;
+}
+
+.icon-consultas-rt:hover {
+  background: #3d4051;
+  color: #fff;
+}
+
+
+.nav-tabs {
+  border-bottom: 0px solid #dee2e6;
+}
+
+.tab-class{
+  cursor: pointer;
+  background-color: #fff;
+  color: #3d4051 !important;
+  border: solid 1px #bdbdbd4d;
+  margin-right: 2px;
+}
+
+.tab-active {
+  cursor: pointer;
+  background-color: #417bff;
+  color: #fff !important;
+  border: solid 1px #fff;
+}

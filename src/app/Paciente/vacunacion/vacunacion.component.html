@@ -1,0 +1,55 @@
+<div class="container rt-nabvar-primary rt-body">
+  <form [formGroup]='vacunaForm' class="form">
+    <div class="row">
+      <!-- <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Paciente">
+    <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Vacuna"> -->
+      <div class="col-4">
+        <div class="form-group">
+          <ng-select [items]="listaVacunas" bindLabel="Nombre" formControlName="Vacuna"
+            placeholder="Selecciona una vacuna*">
+          </ng-select>
+        </div>
+      </div>
+      <div class="col-4">
+        <div class="form-group">
+          <div class="input-group">
+            <input class="form-control  form-control-sm" formControlName="Fecha_Ultima" placeholder="1990-09-19"
+              name="dp" ngbDatepicker #d="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-sm btn-primary calendar" (click)="d.toggle()" type="button">Seleccionar
+                fecha</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-2">
+        <div class="form-group">
+          <input type="submit" name="submit" [disabled]="vacunaForm.invalid" (click)="guardarVacuna()"
+            class="btn btn-primary btn-md" value="Guardar">
+        </div>
+        <br>
+      </div>
+    </div>
+
+  </form>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
+        <tr>
+          <th scope="col">Vacuna</th>
+          <th scope="col">Fecha de última aplicación</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of listaVacunacion" style="cursor:pointer;">
+          <td>{{ item.Nombre}}</td>
+          <td>{{ item.Fecha_Ultima | date : 'dd/MM/yyy'}}</td>
+          <td> <input type="button" (click)="EliminarVacuna(item.id)" class="btn btn-primary btn-sm" value="Eliminar">
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

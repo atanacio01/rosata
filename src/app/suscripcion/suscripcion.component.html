@@ -1,0 +1,119 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }"
+  [template]="customLoadingTemplate"></ngx-loading>
+<div class="container rt-heading rt-nabvar-primary rt-body" style="padding-bottom: 25px;">
+  <div class="row">
+    <div class="col-6">
+      <div class="card-title text-center">
+        <h3 class="text-center">Plan rosata</h3>
+        <br>
+        <i class="fas fa-leaf" style="font-size: 53px;"></i>
+        <br>
+        <br>
+      </div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Pacientes y consultas ilimitados</li>
+        <li class="list-group-item">Historia clínica digital</li>
+        <li class="list-group-item">Agenda</li>
+        <li class="list-group-item">Soporte vía correo o whatsapp</li>
+      </ul>
+      <div class="card-title text-center">
+        <br>
+        <br>
+        <h3 class="text-center" style="color:#15c466;">$109 mensual</h3>
+        <span>IVA incluido</span>
+      </div>
+    </div>
+    <div class="col-6">
+
+      <!-- <div class="col-12 col-sm-8 col-md-6 col-lg-4 mx-auto"> -->
+      <div id="pay-invoice" class="card">
+        <div class="card-body">
+          <div class="card-title">
+            <h3 class="text-center">Agregar método de pago</h3>
+          </div>
+          <hr>
+          <form [formGroup]="cardForm">
+            <div class="form-group text-center">
+              <ul class="list-inline">
+                <li class="list-inline-item"><i class="fab fa-cc-visa" style="font-size: 30px;"></i>
+                </li>
+                <li class="list-inline-item"><i class="fab fa-cc-mastercard" style="font-size: 30px;"></i></li>
+                <li class="list-inline-item"><i class="fab fa-cc-amex" style="font-size: 30px;"></i></li>
+              </ul>
+            </div>
+            <!-- <div class="form-group">
+                                        <label for="cc-payment" class="control-label mb-1">Payment </label>
+                                        <input id="cc-payment" name="cc-payment" type="text" class="form-control"
+                                            aria-required="true" aria-invalid="false" required value="100.00">
+                                        <span class="invalid-feedback">Enter the payment amount</span>
+                                    </div> -->
+            <div class="form-group has-success">
+              <label for="cc-name" class="control-label mb-1">Nombre en la tarjeta</label>
+              <input name="cc-name" type="text" class="form-control cc-name" required autocomplete="cc-name"
+                aria-required="true" aria-invalid="false" aria-describedby="cc-name-error" formControlName="nombre">
+              <span class="invalid-feedback">Enter the name as shown on credit card</span>
+            </div>
+            <div class="form-group">
+              <label for="cc-number" class="control-label mb-1">Número de tarjeta</label>
+              <input id="cc-number" name="cc-number" type="tel" class="form-control cc-number identified" required=""
+                pattern="[0-9]{16}" formControlName="numero">
+              <span class="invalid-feedback">Enter a valid 16 digit card number</span>
+            </div>
+            <div class="row">
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="cc-exp" class="control-label mb-1">Mes</label>
+                  <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="MM"
+                    autocomplete="cc-exp" formControlName="mes">
+                  <span class="invalid-feedback">Enter the expiration date</span>
+                </div>
+              </div>
+              <div class="col-3">
+                <div class="form-group">
+                  <label for="cc-exp" class="control-label mb-1">Año</label>
+                  <input id="cc-exp" name="cc-exp" type="tel" class="form-control cc-exp" required placeholder="YY"
+                    autocomplete="cc-exp" formControlName="anio">
+                  <span class="invalid-feedback">Enter the expiration date</span>
+                </div>
+              </div>
+              <div class="col-6">
+                <label for="x_card_code" class="control-label mb-1">Código de seguridad</label>
+                <div class="input-group">
+                  <input id="x_card_code" name="x_card_code" type="tel" class="form-control cc-cvc" required
+                    autocomplete="off" formControlName="cvc">
+                  <span class="invalid-feedback order-last">Enter the 3-digit code on
+                    back</span>
+                  <div class="input-group-append">
+                    <div class="input-group-text">
+                      <span class="fa fa-question-circle fa-lg" data-toggle="popover" data-container="body"
+                        data-html="true" data-title="Security Code"
+                        data-content="<div class='text-center one-card'>The 3 digit code on back of the card..<div class='visa-mc-cvc-preview'></div></div>"
+                        data-trigger="hover"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- <div class="form-group">
+                                        <label for="x_zip" class="control-label mb-1">Postal code</label>
+                                        <input id="x_zip" name="x_zip" type="text" class="form-control" value=""
+                                            data-val="true" data-val-required="Please enter the ZIP/Postal code"
+                                            autocomplete="postal-code">
+                                        <span class="help-block" data-valmsg-for="x_zip"
+                                            data-valmsg-replace="true"></span>
+                                    </div> -->
+            <div>
+              <button id="payment-button" type="submit" (click)="pagar()" class="btn btn-lg btn-primary btn-block">
+                <i class="fa fa-lock fa-lg"></i>&nbsp;
+                <span id="payment-button-amount">$109</span>
+                <span id="payment-button-sending" style="display:none;">Sending…</span>
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- </div> -->
+
+    </div>
+  </div>
+</div>

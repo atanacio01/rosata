@@ -1,0 +1,77 @@
+<div class="container rt-heading rt-nabvar-primary rt-body" style="padding-bottom: 25px;">
+  <div>
+    <form [formGroup]='agendaForm' class="form">
+      <div class="row">
+        <div class="col-2" style="padding-top: 40px;">
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="" formControlName="Paciente_Nuevo">
+            <label class="form-check-label" for="defaultCheck1">
+              <label for="username" class="main-color-text">Paciente Nuevo</label><br>
+            </label>
+          </div>
+        </div>
+        <div class="col-3" style="padding-top: 40px;">
+          <div class="form-group">
+            <ng-select [items]="listaPacientes" bindLabel="Nombre_Completo" *ngIf="!agendaForm.value.Paciente_Nuevo"
+              formControlName="Id_Paciente" placeholder="Busca un paciente">
+            </ng-select>
+            <input type="text" class="form-control form-control-sm" *ngIf="agendaForm.value.Paciente_Nuevo"
+              formControlName="Nombre" placeholder="Nombre del paciente">
+          </div>
+        </div>
+        <div class="col-3" style="padding-top: 40px;">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control  form-control-sm" formControlName="Fecha" placeholder="1990-09-19" name="dp"
+                ngbDatepicker #d="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-sm btn-primary calendar" (click)="d.toggle()" type="button">Seleccionar
+                  fecha</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-2">
+          <ngb-timepicker [(ngModel)]="time" [spinners]="true" formControlName="Horario"></ngb-timepicker>
+        </div>
+        <div class="col-2" style="padding-top: 40px;">
+          <div class="form-group">
+            <input type="submit" name="submit" [disabled]="agendaForm.invalid" (click)="guardarTurno()"
+              class="btn btn-primary btn-sm" value="Guardar">
+          </div>
+          <br>
+        </div>
+      </div>
+
+    </form>
+  </div>
+  <hr>
+  <div class="row text-center">
+    <div class="col-md-4">
+      <div class="btn-group">
+        <div class="btn btn-primary" mwlCalendarPreviousView [view]="view" [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()">
+          Anterior
+        </div>
+        <div class="btn btn-outline-secondary" mwlCalendarToday [(viewDate)]="viewDate">
+          Hoy
+        </div>
+        <div class="btn btn-primary" mwlCalendarNextView [view]="view" [(viewDate)]="viewDate"
+          (viewDateChange)="closeOpenMonthViewDay()">
+          Siguiente
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <h3>{{ viewDate | calendarDate:(view + 'ViewTitle'):'es_MX' }}</h3>
+    </div>
+  </div>
+  <br />
+  <div [ngSwitch]="view">
+    <mwl-calendar-month-view *ngSwitchCase="CalendarView.Month" [viewDate]="viewDate" [events]="events"
+      [refresh]="refresh" [activeDayIsOpen]="activeDayIsOpen" (dayClicked)="dayClicked($event.day)" [locale]="locale"
+      (eventClicked)="handleEvent('Clicked', $event.event)" (eventTimesChanged)="eventTimesChanged($event)">
+    </mwl-calendar-month-view>
+  </div>
+
+</div>

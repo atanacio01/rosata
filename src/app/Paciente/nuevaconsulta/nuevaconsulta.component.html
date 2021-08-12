@@ -1,0 +1,137 @@
+<ngx-loading [show]="loading" [config]="{ backdropBorderRadius: '3px',fullScreenBackdrop:true }"
+  [template]="customLoadingTemplate"></ngx-loading>
+<div class="container rt-heading rt-nabvar-primary rt-body">
+  <h5>Consulta</h5>
+  <form [formGroup]='consultaForm' class="form">
+    <div class="row">
+      <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="id">
+      <input type="text" class="form-control form-control-sm" *ngIf="1==2" formControlName="Id_Paciente">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Nota de evolución:</label><br>
+          <textarea class="form-control" formControlName="Nota_Evolucion" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Altura:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="Altura" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Peso:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="Peso" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>T.A.:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="TA" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Temp.:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="Temperatura" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>F.C.:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="FC" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>F.R.:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="FR" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>O2:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="O2" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>IMC:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="IMC" name="username"
+            id="username">
+        </div>
+      </div>
+      <div class="col">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>PC:</label><br>
+          <input type="text" class="form-control form-control-sm" formControlName="PC" name="username"
+            id="username">
+        </div>
+      </div>
+
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Exploración Física:</label><br>
+          <textarea class="form-control" formControlName="Exploracion_Fisica" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Resultado de Estudios de
+            Laboratorio:</label><br>
+          <textarea class="form-control" formControlName="Resultados_Laboratorio" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Diagnóstico:</label><br>
+          <textarea class="form-control" formControlName="Diagnostico" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Orden de Estudio de
+            Laboratorio:</label><br>
+          <textarea class="form-control" formControlName="Orden_Estudio" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Tratamiento:</label><br>
+          <textarea class="form-control" formControlName="Tratamiento" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <div class="form-group">
+          <label for="username" class="text-info"><span class="error-msg">*</span>Interconsultas:</label><br>
+          <textarea class="form-control" formControlName="Interconsulta" rows="3"></textarea>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <input type="submit" name="submit" (click)="nuevaConsulta()" class="btn btn-info btn-md" value="Guardar">
+    </div>
+    <br>
+  </form>
+</div>

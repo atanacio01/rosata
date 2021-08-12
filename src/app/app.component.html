@@ -1,0 +1,63 @@
+<ng-sidebar-container style="height: 100vh;">
+  <ng-sidebar [(opened)]="_opened" class="bg-primary" style="height: 100vh;">
+    <div ng-sidebar-content>
+      <div style="padding: 10px;">
+        <ul class="list-group list-group-flush" style="margin-top:10px;">
+          <li class="list-group-item" style="padding: 10px;"><a routerLink="/pacientes"> <i class="fas fa-user"></i>
+            </a></li>
+          <li class="list-group-item" style="padding: 10px;"><i [routerLink]="[{ outlets: { sub: 'Historia' } }]"
+              class="fas fa-calendar-alt"></i> </li>
+          <li class="list-group-item" style="padding: 10px;"><i class="fas fa-cogs"></i> </li>
+        </ul>
+      </div>
+    </div>
+  </ng-sidebar>
+
+  <div ng-sidebar-content style="height: 100vh;">
+    <nav class="navbar navbar-expand-lg navbar-light rt-nabvar-primary" *ngIf="isLogin()" style="height: 50px;" >
+      <a class="navbar-brand" href="#"><i class="fas fa-leaf" style="font-size: 15px;"></i> rosata </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+              <li class="nav-item"  *ngFor="let item of menu" style="margin:3px;">
+                <a class="nav-link tab-class"  [ngClass]="{'nav-active': isActive(item)}" (click)="goto(item.metodo,item)" style="cursor: pointer;">
+                  <i [ngClass]="item.icono" style="margin:5px;"></i>
+                  {{item.texto}}</a>
+              </li>
+            </ul>
+
+        <li class="nav-item" style="list-style: none;font-size:25px;padding: 0px;margin: -8px;" ngbDropdown>
+          <a class="nav-link" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown2" role="button">
+            <i class="fas fa-user-circle"></i>
+          </a>
+          <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+            <!-- <a class="dropdown-item" routerLink="/cuenta">Cuenta</a>
+            <a class="dropdown-item" routerLink="/suscripcion">Suscripción</a> -->
+            <a class="dropdown-item" (click)="logout()">Cerrar sesión</a>
+          </div>
+        </li>
+
+      </div>
+    </nav>
+    <!-- <nav class="navbar navbar-toggleable-md navbar-light bg-faded rt-primary fixed-top" *ngIf="isLogin()">
+      <button type="button" (click)="_toggleSidebar()" class="btn btn-light"><i class="fas fa-bars"></i></button>
+      <a class="navbar-brand rt-color-text" href="#">Rosata</a>
+
+      <li class="nav-item" style="list-style: none;font-size:25px;padding: 0px;margin: -8px;" ngbDropdown>
+        <a class="nav-link rt-color-text" style="cursor: pointer" ngbDropdownToggle id="navbarDropdown2" role="button">
+          <i class="fas fa-user-circle"></i>
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdown2" class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" (click)="logout()">Cuenta</a>
+          <a class="dropdown-item" (click)="logout()">Cerrar sesión</a>
+        </div>
+      </li>
+    </nav> -->
+    <router-outlet></router-outlet>
+  </div>
+</ng-sidebar-container>
+<ngx-alerts></ngx-alerts>
